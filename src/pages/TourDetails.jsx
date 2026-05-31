@@ -11,19 +11,14 @@ export default function TourDetails() {
 
   const [date, setDate] = useState("");
   const [guests, setGuests] = useState(1);
-  const [transportation, setTransportation] =
-    useState(false);
+  const [transportation, setTransportation] = useState(false);
 
-  const tour = tours.find(
-    (tour) => tour.id === id
-  );
+  const tour = tours.find((tour) => tour.id === id);
 
   if (!tour) {
     return (
       <div className="min-h-screen bg-black text-white pt-32 px-6">
-        <h1 className="text-4xl font-bold">
-          Tour not found
-        </h1>
+        <h1 className="text-4xl font-bold">Tour not found</h1>
       </div>
     );
   }
@@ -35,22 +30,37 @@ export default function TourDetails() {
   const total =
     tour.price * guests + transportPrice;
 
-  const handleBooking = () => {
-    const booking = {
-      tour: tour.title,
-      date,
-      guests,
-      transportation,
-      total,
-      name,
-      email,
-      phone,
-    };
+  const handleBooking = async () => {
+    try {
+      const booking = {
+        tour: tour.title,
+        date,
+        guests,
+        transportation,
+        total,
+        name,
+        email,
+        phone,
+      };
 
-    console.log("Booking Submitted:");
-    console.log(booking);
+      const response = await fetch(
+        "http://localhost:5001/api/bookings",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(booking),
+        }
+      );
 
-    alert("Booking submitted successfully!");
+      const data = await response.json();
+
+      alert(data.message);
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong.");
+    }
   };
 
   return (
@@ -188,8 +198,7 @@ export default function TourDetails() {
               </p>
 
               <p>
-                Transportation: $
-                {transportPrice}
+                Transportation: ${transportPrice}
               </p>
 
               <h3 className="text-3xl font-bold">
