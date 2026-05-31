@@ -5,6 +5,10 @@ import tours from "../data/tours";
 export default function TourDetails() {
   const { id } = useParams();
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
   const [date, setDate] = useState("");
   const [guests, setGuests] = useState(1);
   const [transportation, setTransportation] =
@@ -30,6 +34,24 @@ export default function TourDetails() {
 
   const total =
     tour.price * guests + transportPrice;
+
+  const handleBooking = () => {
+    const booking = {
+      tour: tour.title,
+      date,
+      guests,
+      transportation,
+      total,
+      name,
+      email,
+      phone,
+    };
+
+    console.log("Booking Submitted:");
+    console.log(booking);
+
+    alert("Booking submitted successfully!");
+  };
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -66,6 +88,54 @@ export default function TourDetails() {
           <div className="space-y-6">
             <div>
               <label className="block mb-2">
+                Full Name
+              </label>
+
+              <input
+                type="text"
+                value={name}
+                onChange={(e) =>
+                  setName(e.target.value)
+                }
+                placeholder="John Smith"
+                className="w-full rounded-xl bg-black border border-white/20 p-3"
+              />
+            </div>
+
+            <div>
+              <label className="block mb-2">
+                Email Address
+              </label>
+
+              <input
+                type="email"
+                value={email}
+                onChange={(e) =>
+                  setEmail(e.target.value)
+                }
+                placeholder="john@example.com"
+                className="w-full rounded-xl bg-black border border-white/20 p-3"
+              />
+            </div>
+
+            <div>
+              <label className="block mb-2">
+                Phone Number
+              </label>
+
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) =>
+                  setPhone(e.target.value)
+                }
+                placeholder="+20 123 456 7890"
+                className="w-full rounded-xl bg-black border border-white/20 p-3"
+              />
+            </div>
+
+            <div>
+              <label className="block mb-2">
                 Select Date
               </label>
 
@@ -89,9 +159,7 @@ export default function TourDetails() {
                 min="1"
                 value={guests}
                 onChange={(e) =>
-                  setGuests(
-                    Number(e.target.value)
-                  )
+                  setGuests(Number(e.target.value))
                 }
                 className="w-full rounded-xl bg-black border border-white/20 p-3"
               />
@@ -116,8 +184,7 @@ export default function TourDetails() {
 
             <div className="border-t border-white/10 pt-6 space-y-2">
               <p>
-                Tour Price: $
-                {tour.price} × {guests}
+                Tour Price: ${tour.price} × {guests}
               </p>
 
               <p>
@@ -130,7 +197,10 @@ export default function TourDetails() {
               </h3>
             </div>
 
-            <button className="w-full rounded-full bg-white py-4 text-black font-bold hover:scale-105 transition">
+            <button
+              onClick={handleBooking}
+              className="w-full rounded-full bg-white py-4 text-black font-bold hover:scale-105 transition"
+            >
               Book Now
             </button>
           </div>
