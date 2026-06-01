@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useParams } from "react-router-dom";
+import { API_URL } from "../config";
 import tours from "../data/tours";
 
 export default function TourDetails() {
@@ -61,7 +62,7 @@ export default function TourDetails() {
       };
 
       const response = await fetch(
-        "http://localhost:5001/api/bookings",
+        `${API_URL}/api/bookings`,
         {
           method: "POST",
           headers: {

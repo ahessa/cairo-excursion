@@ -1,0 +1,36 @@
+services:
+
+  postgres:
+    image: postgres:17
+    container_name: cairo-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: cairoexcursion
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    container_name: cairo-backend
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - "5001:5001"
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: cairoexcursion
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+
+  frontend:
+    build: .
+    container_name: cairo-frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"

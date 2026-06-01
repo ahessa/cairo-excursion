@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "../config";
 
 export default function AdminBookings() {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5001/api/bookings")
+    fetch(`${API_URL}/api/bookings`)
       .then((res) => res.json())
       .then((data) => {
         setBookings(data);
