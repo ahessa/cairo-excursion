@@ -7,6 +7,7 @@ import Tours from "./pages/Tours";
 import TourDetails from "./pages/TourDetails";
 import Contact from "./pages/Contact";
 import AdminBookings from "./pages/AdminBookings";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -35,6 +36,7 @@ export default function App() {
   	element={<AdminBookings />}
 	/>
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

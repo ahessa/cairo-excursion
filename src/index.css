@@ -3,3 +3,17 @@
 html {
   scroll-behavior: smooth;
 }
+
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.hero-image {
+  animation: slowZoom 20s ease-in-out infinite alternate;
+}

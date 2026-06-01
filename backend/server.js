@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
-
+const initDatabase = require("./init-db");
 const pool = require("./db/database");
 
 const app = express();
@@ -96,6 +96,8 @@ app.get("/api/bookings", async (req, res) => {
 
 
 const PORT = 5001;
+
+initDatabase();
 
 app.listen(PORT, () => {
   console.log(
