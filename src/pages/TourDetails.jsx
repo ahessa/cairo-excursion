@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useParams } from "react-router-dom";
 import tours from "../data/tours";
 
@@ -11,14 +12,28 @@ export default function TourDetails() {
 
   const [date, setDate] = useState("");
   const [guests, setGuests] = useState(1);
-  const [transportation, setTransportation] = useState(false);
+  const [transportation, setTransportation] =
+    useState(false);
 
-  const tour = tours.find((tour) => tour.id === id);
+  const [bookingSuccess, setBookingSuccess] =
+    useState(false);
+
+  const [bookingName, setBookingName] =
+    useState("");
+
+  const [isSubmitting, setIsSubmitting] =
+    useState(false);
+
+  const tour = tours.find(
+    (tour) => tour.id === id
+  );
 
   if (!tour) {
     return (
       <div className="min-h-screen bg-black text-white pt-32 px-6">
-        <h1 className="text-4xl font-bold">Tour not found</h1>
+        <h1 className="text-4xl font-bold">
+          Tour not found
+        </h1>
       </div>
     );
   }
@@ -32,6 +47,8 @@ export default function TourDetails() {
 
   const handleBooking = async () => {
     try {
+      setIsSubmitting(true);
+
       const booking = {
         tour: tour.title,
         date,
@@ -48,7 +65,8 @@ export default function TourDetails() {
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type":
+              "application/json",
           },
           body: JSON.stringify(booking),
         }
@@ -56,10 +74,27 @@ export default function TourDetails() {
 
       const data = await response.json();
 
-      alert(data.message);
+      if (data.success) {
+        setBookingName(name);
+        setBookingSuccess(true);
+
+        setName("");
+        setEmail("");
+        setPhone("");
+        setDate("");
+        setGuests(1);
+        setTransportation(false);
+      } else {
+        alert("Booking failed.");
+      }
     } catch (error) {
       console.error(error);
-      alert("Something went wrong.");
+
+      alert(
+        "Something went wrong. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -91,6 +126,9 @@ export default function TourDetails() {
         </div>
 
         <div className="mt-12 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-md">
+
+          
+
           <h2 className="text-3xl font-bold mb-8">
             Book This Tour
           </h2>
@@ -169,7 +207,9 @@ export default function TourDetails() {
                 min="1"
                 value={guests}
                 onChange={(e) =>
-                  setGuests(Number(e.target.value))
+                  setGuests(
+                    Number(e.target.value)
+                  )
                 }
                 className="w-full rounded-xl bg-black border border-white/20 p-3"
               />
@@ -194,11 +234,13 @@ export default function TourDetails() {
 
             <div className="border-t border-white/10 pt-6 space-y-2">
               <p>
-                Tour Price: ${tour.price} × {guests}
+                Tour Price: $
+                {tour.price} × {guests}
               </p>
 
               <p>
-                Transportation: ${transportPrice}
+                Transportation: $
+                {transportPrice}
               </p>
 
               <h3 className="text-3xl font-bold">
@@ -208,10 +250,46 @@ export default function TourDetails() {
 
             <button
               onClick={handleBooking}
-              className="w-full rounded-full bg-white py-4 text-black font-bold hover:scale-105 transition"
+              disabled={isSubmitting}
+              className="w-full rounded-full bg-white py-4 text-black font-bold hover:scale-105 transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Book Now
+              {isSubmitting
+                ? "Booking..."
+                : "Book Now"}
             </button>
+            <AnimatePresence>
+  {bookingSuccess && (
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 20,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      exit={{
+        opacity: 0,
+        y: 20,
+      }}
+      transition={{
+        duration: 0.4,
+      }}
+      className="mt-6 rounded-2xl border border-green-500/30 bg-green-500/10 p-5"
+    >
+	<h3 className="flex items-center gap-2 text-xl font-bold text-green-400">
+        <span className="text-2xl">✓</span>
+		Booking Received
+      </h3>
+
+      <p className="mt-2 text-gray-300">
+        Thank you {bookingName}! We'll
+        contact you shortly to confirm
+        your booking details.
+      </p>
+    </motion.div>
+  )}
+</AnimatePresence>
           </div>
         </div>
       </div>

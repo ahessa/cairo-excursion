@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Tours from "./pages/Tours";
 import TourDetails from "./pages/TourDetails";
 import Contact from "./pages/Contact";
+import AdminBookings from "./pages/AdminBookings";
 
 export default function App() {
   return (
@@ -29,6 +30,10 @@ export default function App() {
           path="/contact"
           element={<Contact />}
         />
+        <Route
+	path="/admin/bookings"
+  	element={<AdminBookings />}
+	/>
       </Routes>
     </BrowserRouter>
   );
