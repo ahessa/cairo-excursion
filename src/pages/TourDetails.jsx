@@ -1197,7 +1197,7 @@ src={tour.heroImage}
 
     <div>
 
-      <div className="
+      {/*<div className="
       rounded-full
       border
       border-green-500/20
@@ -1211,8 +1211,9 @@ src={tour.heroImage}
           Secure Payment
 
         </span>
+        
+      </div>*/}
 
-      </div>
 
     </div>
 
