@@ -1,0 +1,136 @@
+{ 
+    id: 2,
+    title: "Sakkara und die Stufenpyramide",
+    location: "Giza",
+    images: [
+      "/images/dahshur.jpg",
+      "/images/pyramid.jpg",
+      "/images/pyramids02.jpg",
+      "/images/pyramids-main.jpg",
+      "/images/saqqara.jpg"
+    ],
+    description:
+      "Sakkara ist der grosse Friedhof von Memphis. In Sakkara findet man Gräber aus dem alten und neuen Reich. Wichtigsten Denkmäler in Sakkara sind die Stufenpyramide, Mastabas und das Serapiom. Die Stufenpyramide ist die erste Pyramide in der ägyptischen Geschichte und das erste steinerne Bauwerk in der Geschichte der Menschheit. Sie hat eine höhe von 66 m, die Basis länge ist 126 m und die Bereite 105 m. Und damit hat Imhoteb für seinen Pharao Zoser das grösste Grab seiner Zeit errichtet. Es gibt nur wenige Denkmäler auf der Welt, die in der Menscheitsgeschichte einen so bedeutenden Stellenwert innehaben wie die Stufenpyramide in Sakkara. Zusammen mit den Bauten, die sie umgaben, bildet sie den Grabkomplex des Djoser. Ohne Ubertreibung lässt sich sagen, dass sein Pyramidenbezirk einen Meilenstein in der Entwichlung der monumentalen Steinarchitektur in Ägypten und der Welt überhaupt darstellt. Der Komplex der Stufenpyramide enthält die Überreste der Umfassungsmauer, eine Säulenhalle, den offenen Hof der Pyramide, und der Hebsed, das ist ein Hof wo der Pharao Zoser jede 30 Jahren eine Feierlichkeit der Thronbesteigung veranstalten sollte. Der Hof wurde aber nie gebraucht.  Der Haupteingang der Pyramide ist im Norden, doch ein späterer Eingang aus der 26ten Dynastie wurde im Süden gefunden.alten Reiches.",
+  },
+
+  {
+    id: 3,
+    title: "Saqqara",
+    location: "Giza",
+    images: [
+      "/images/pyramid.jpg"
+    ],
+    description:
+      "Home to the Step Pyramid of Djoser, Saqqara represents one of the earliest monumental stone structures in history.",
+  },
+
+  {
+    id: 4,
+    title: "Grand Egyptian Museum",
+    location: "Giza",
+    images: [
+      "/images/gem.jpg",
+      "/images/tutankhamun.jpg"
+    ],
+    description:
+      "The world's largest archaeological museum dedicated to a single civilization and home to treasures of Tutankhamun.",
+  },
+
+  {
+    id: 5,
+    title: "Khan El Khalili",
+    location: "Cairo",
+    images: [
+      "/images/camel.jpg"
+    ],
+    description:
+      "A historic marketplace filled with handmade crafts, spices and traditional Egyptian culture.",
+  },
+
+  {
+    id: 6,
+    title: "Old Cairo",
+    location: "Cairo",
+    images: [
+      "/images/museum.jpeg"
+    ],
+    description:
+      "Discover ancient churches, mosques and centuries of history in one of Cairo's oldest districts.",
+  },
+
+  {
+    id: 7,
+    title: "Alexandria",
+    location: "Alexandria",
+    images: [
+      "/images/nile-view.jpg"
+    ],
+    description:
+      "Founded by Alexander the Great, Alexandria combines Mediterranean beauty with Egyptian history.",
+  },
+
+  {
+    id: 8,
+    title: "White Desert",
+    location: "Western Desert",
+    images: [
+      "/images/camel.jpg"
+    ],
+    description:
+      "A surreal landscape of white chalk formations sculpted by wind over millions of years.",
+  },
+
+  {
+    id: 9,
+    title: "Luxor Temple",
+    location: "Luxor",
+    images: [
+      "/images/tutankhamun.jpg"
+    ],
+    description:
+      "One of Egypt's most beautiful temples, especially stunning when illuminated at night.",
+  },
+
+  {
+    id: 10,
+    title: "Karnak Temple",
+    location: "Luxor",
+    images: [
+      "/images/tutankhamun.jpg"
+    ],
+    description:
+      "A vast temple complex built over thousands of years by generations of pharaohs.",
+  },
+
+  {
+    id: 11,
+    title: "Valley of the Kings",
+    location: "Luxor",
+    images: [
+      "/images/tutankhamun.jpg"
+    ],
+    description:
+      "Burial place of many pharaohs including Tutankhamun, hidden among the mountains of Luxor.",
+  },
+
+  {
+    id: 12,
+    title: "Aswan",
+    location: "Aswan",
+    images: [
+      "/images/felucca.jpg"
+    ],
+    description:
+      "Known for its peaceful Nile scenery and beautiful islands, Aswan is one of Egypt's gems.",
+  },
+
+  {
+    id: 13,
+    title: "Abu Simbel",
+    location: "Aswan",
+    images: [
+      "/images/tutankhamun.jpg"
+    ],
+    description:
+      "Massive rock temples built by Ramses II and one of Egypt's most impressive monuments.",
+  },

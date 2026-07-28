@@ -8,6 +8,10 @@ import TourDetails from "./pages/TourDetails";
 import Contact from "./pages/Contact";
 import AdminBookings from "./pages/AdminBookings";
 import Footer from "./components/Footer";
+import Culture from "./pages/Culture";
+import WhatsAppButton from "./components/WhatsAppButton";
+import PaymentSuccess from "./pages/PaymentSuccess";
+import PaymentFailed from "./pages/PaymentFailed";
 
 export default function App() {
   return (
@@ -16,12 +20,17 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-
+	
+	
+	
         <Route
           path="/tours"
           element={<Tours />}
         />
-
+	<Route
+	  path="/culture"
+	  element={<Culture />}
+	/>
         <Route
           path="/tour/:id"
           element={<TourDetails />}
@@ -35,8 +44,22 @@ export default function App() {
 	path="/admin/bookings"
   	element={<AdminBookings />}
 	/>
+	
+	<Route
+	  path="/payment-success"
+	  element={<PaymentSuccess />}
+	/>
+	
+	<Route
+  path="/payment-failed"
+  element={<PaymentFailed />}
+/>
+	
       </Routes>
+      <WhatsAppButton />
       <Footer />
+      
     </BrowserRouter>
+    
   );
 }
